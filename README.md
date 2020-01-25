@@ -10,7 +10,7 @@ Inform OSS maintainers who may not be aware of how their work is being used
 ## Objective 3
 Challenge OSS maintainers to re-license with an ethical license so that Palantir has to remove their dependencies
 
-# Notes
+# Notes / Ideas
 
 * E.g. https://github.com/palantir/blueprint/network/dependencies
 
@@ -23,3 +23,4 @@ Challenge OSS maintainers to re-license with an ethical license so that Palantir
 * Rack attack
   * Rotate error messages randomly on DDoS prevention
   * Permanent redirect error provides high-profile url to user agent (fbi.gov?)
+* Redirect to adware site if referrer is kiwifarms, 8chan, 4chan (HN? hahaha)
