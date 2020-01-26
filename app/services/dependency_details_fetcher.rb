@@ -9,14 +9,15 @@ class DependencyDetailsFetcher
     @dependency = dependency
   end
 
-  def source_code_url
-    case dependency.package_manager.name.downcase
+  def fetch
+    details = case dependency.package_manager.name.downcase
     when "rubygems" then parse_from_rubygems
     when "npm" then parse_from_npm
-    else "#"
+    when "pip" then parse_from_pip
+    else { url: "", license: "" }
     end
   rescue
-    "#"
+    { url: "", license: "" }
   end
 
   private
@@ -27,7 +28,22 @@ class DependencyDetailsFetcher
     http.verify_mode = OpenSSL::SSL::VERIFY_PEER
     response = http.request(Net::HTTP::Get.new("/v2/search?q=#{dependency.name}"))
     json = JSON.parse(response.body)
-    return json['results'].first['package']['links']['npm']
+    {
+      url: json['results'].first['package']['links']['npm'],
+      license: nil
+    }
+  end
+
+  def parse_from_pip
+    http = Net::HTTP.new("pypi.org", 443)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+    response = http.request(Net::HTTP::Get.new("/pypi/#{dependency.name}/json"))
+    json = JSON.parse(response.body)
+    {
+      url: json['info']['package_url'],
+      license: json['info']['license']
+    }
   end
 
   def parse_from_rubygems
@@ -35,7 +51,11 @@ class DependencyDetailsFetcher
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_PEER
     response = http.request(Net::HTTP::Get.new("/api/v1/gems/#{dependency.name}.json"))
-    return JSON.parse(response.body)['project_uri']
+    json = JSON.parse(response.body)
+    {
+      url: json['project_uri'],
+      license: json['licenses'].first
+    }
   end
 
 end
