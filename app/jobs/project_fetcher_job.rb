@@ -1,6 +1,6 @@
 class ProjectFetcherJob < ApplicationJob
 
-  @queue = :projects
+  queue_as :projects
 
   def self.perform
     Organization.all.each do |organization|

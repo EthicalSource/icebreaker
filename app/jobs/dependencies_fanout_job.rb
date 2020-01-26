@@ -1,9 +1,9 @@
 class DependenciesFanoutJob < ApplicationJob
 
-  @queue = :dependencies
+  queue_as :dependencies
 
   def perform
-    Project.all.each { |project| Resque.enqueue(ProjectFetcherJob, project.id) }
+    Project.all.each { |project| ProjectFetcherJob.perform(project.id)) }
   end
 
 end

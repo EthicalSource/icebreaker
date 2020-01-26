@@ -1,6 +1,6 @@
-class ProjectFetcherJob < ApplicationJob
+class DependenciesFetcherJob < ApplicationJob
 
-  @queue = :dependencies
+  queue_as :dependencies
 
   def self.perform(project_id)
     project = Project.find(project_id)
