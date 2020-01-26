@@ -4,9 +4,9 @@ namespace :defaults do
   task :init => :environment do
     DependencyInstance.destroy_all
     Project.destroy_all
-    PackageManager.destroy_all
     Organization.destroy_all
     Dependency.destroy_all
+    PackageManager.destroy_all
 
     PackageManager.create(name: "RubyGems")
     PackageManager.create(name: "NPM")
