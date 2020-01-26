@@ -1,12 +1,16 @@
 DependencyInstance.destroy_all
-PackageManager.destroy_all
-Language.destroy_all
 Project.destroy_all
 Organization.destroy_all
 Dependency.destroy_all
+PackageManager.destroy_all
+Language.destroy_all
 
-language = Language.create(name: "Ruby")
-package_manager = PackageManager.create(name: "RubyGems", language: language)
+ruby = Language.create(name: "Ruby")
+js = Language.create(name: "Javascript")
+
+ruby_package_manager = PackageManager.create(name: "RubyGems", language: ruby)
+js_package_manager = PackageManager.create(name: "NPM", language: js)
+
 org = Organization.create(name: "Palantir")
 
 %w{stormtrooper sith imperial bountyhunter}.each do |p|
@@ -19,12 +23,19 @@ org = Organization.create(name: "Palantir")
   )
 end
 
-%w{rebel senate jedi ewoks}.each do |p|
+%w{society snuffle rspec simplecov}.each do |p|
   Dependency.create(
     name: p,
     language: "Ruby",
-    source_repo_url: "https://github.com/ContributorCovenant/#{p}",
-    package_manager: package_manager
+    package_manager: ruby_package_manager
+  )
+end
+
+%w{browserify api react moment}.each do |p|
+  Dependency.create(
+    name: p,
+    language: "Javascript",
+    package_manager: js_package_manager
   )
 end
 
