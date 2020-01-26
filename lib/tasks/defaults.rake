@@ -13,7 +13,7 @@ namespace :defaults do
 
     PackageManager.find_or_create_by(name: "RubyGems", language: ruby)
     PackageManager.find_or_create_by(name: "NPM", language: js)
-    PackageManager.find_or_create_by(name: "Maven", language: java)
+    PackageManager.find_or_create_by(name: "MAVEN", language: java)
 
     Organization.find_or_create_by(name: "Palantir")
   end
