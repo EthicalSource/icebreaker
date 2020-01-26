@@ -6,6 +6,7 @@ ruby '2.5.3'
 
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'dotenv'
+gem 'graphql-client'
 gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'puma', '~> 4.1'
