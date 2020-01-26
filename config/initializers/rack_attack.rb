@@ -4,11 +4,11 @@ class Rack::Attack
     req.ip unless req.path.start_with?('/assets')
   end
 
-  throttle(
-    '/',
-    limit: ENV.fetch('THROTTLE_REQUESTS', 10).to_i,
-    period: ENV.fetch('THROTTLE_SECONDS', 20).to_i.seconds
-  )
+  # throttle(
+  #   '/',
+  #   limit: ENV.fetch('THROTTLE_REQUESTS', 10).to_i,
+  #   period: ENV.fetch('THROTTLE_SECONDS', 20).to_i.seconds
+  # )
 
   blocklist("block ip") do |req|
     Rails.cache.read("block #{req.ip}")
