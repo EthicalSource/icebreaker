@@ -1,1 +1,10 @@
-ICEBreaker
+<h1>ICEBreaker</h1>
+
+<% @dependencies.each do |dependency| %>
+  <div class="dependency" style="font-size: 1.<%= dependency.weight %>em;">
+    <h3><%= dependency.name %></h3>
+    <% dependency.projects.each do |project| %>
+      <%= link_to project.github_identifier, project.repo_url %><br />
+    <% end %>
+  </div>
+<% end %>
