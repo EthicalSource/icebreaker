@@ -1,7 +1,8 @@
 class PackageManager < ApplicationRecord
   MANAGERS = {
-    'RUBYGEMS' => 'ruby',
-    'NPM' => 'javascript',
+    'RubyGems' => 'Ruby',
+    'NPM' => 'Javascript',
+    'MAVEN' => 'Java'
   }
   belongs_to :language
   has_many :dependencies

@@ -4,16 +4,13 @@ namespace :defaults do
   task :init => :environment do
     DependencyInstance.destroy_all
     Project.destroy_all
+    PackageManager.destroy_all
     Organization.destroy_all
     Dependency.destroy_all
 
-    ruby = Language.find_or_create_by(name: "Ruby")
-    js = Language.find_or_create_by(name: "Javascript")
-    java = Language.find_or_create_by(name: "Java")
-
-    PackageManager.find_or_create_by(name: "RubyGems", language: ruby)
-    PackageManager.find_or_create_by(name: "NPM", language: js)
-    PackageManager.find_or_create_by(name: "MAVEN", language: java)
+    PackageManager.create(name: "RubyGems")
+    PackageManager.create(name: "NPM")
+    PackageManager.create(name: "MAVEN")
 
     Organization.find_or_create_by(name: "Palantir")
   end

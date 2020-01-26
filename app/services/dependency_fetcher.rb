@@ -35,7 +35,7 @@ class DependencyFetcher
       manifests.map do |manifest|
         manifest.dependencies.nodes.each do |dependency_response|
           package_manager = PackageManager.includes(:language).find_or_create_by!(
-            name: dependency_response.package_manager,
+            name: dependency_response.package_manager
           )
 
           dependency = Dependency.find_or_create_by!(
