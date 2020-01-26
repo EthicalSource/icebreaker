@@ -12,7 +12,7 @@ class DependencyFetcher
             "Authorization": "token #{ENV['GITHUB_TOKEN']}"
           }
         end
-      end  
+      end
     end
 
     def schema
@@ -24,22 +24,24 @@ class DependencyFetcher
     end
 
     def get_dependencies(project)
-      manifests = client.query(
+      organization = project.organization
+      return unless manifests = client.query(
         DependencyFetcher::QUERY_SCHEMA,
         variables: {
-          repository_owner: project.organization.name,
+          repository_owner: organization.name,
           repository_name: project.name,
         }
       ).data.repository.dependency_graph_manifests.nodes
       manifests.map do |manifest|
         manifest.dependencies.nodes.each do |dependency_response|
-          package_manager = PackageManager.find_or_create_by!(
+          package_manager = PackageManager.includes(:language).find_or_create_by!(
             name: dependency_response.package_manager,
           )
 
           dependency = Dependency.find_or_create_by!(
             name: dependency_response.package_name,
             package_manager: package_manager,
+            language: PACKAGE_MANAGER_LANGUAGES[package_manager]
           )
 
           project.dependency_instances.find_or_create_by!(
@@ -68,4 +70,10 @@ class DependencyFetcher
       }
     }
   GRAPHQL
+
+  PACKAGE_MANAGER_LANGUAGES = PackageManager.all.inject({}) do |h, pm|
+    h[pm] ||= pm.language.name
+    h
+  end
+
 end

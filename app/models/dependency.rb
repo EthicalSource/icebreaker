@@ -6,7 +6,7 @@ class Dependency < ApplicationRecord
   after_create :set_source_repo_url
 
   def set_source_repo_url
-    update(source_repo_url: DependencyDetailsService.new(self).source_code_url)
+    update(source_repo_url: DependencyDetailsFetcher.new(self).source_code_url)
   end
 
 end
