@@ -8,9 +8,10 @@ namespace :defaults do
     Dependency.destroy_all
     PackageManager.destroy_all
 
-    PackageManager.create(name: "RubyGems")
+    PackageManager.create(name: "RUBYGEMS")
     PackageManager.create(name: "NPM")
     PackageManager.create(name: "MAVEN")
+    PackageManager.create(name: "PIP")
 
     Organization.find_or_create_by(name: "Palantir")
   end

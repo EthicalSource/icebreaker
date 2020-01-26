@@ -37,11 +37,11 @@ class DependencyFetcher
       manifests.map do |manifest|
         next unless manifest.dependencies.nodes.any?
 
-        package_manager = PackageManager.find_by(
+        package_manager = PackageManager.find_or_create_by(
           name: manifest.dependencies.nodes.first.package_manager
         )
 
-        language = package_manager.language.name
+        language = package_manager.language&.name
 
         manifest.dependencies.nodes.each do |dependency_response|
           dependency = Dependency.find_or_create_by!(
