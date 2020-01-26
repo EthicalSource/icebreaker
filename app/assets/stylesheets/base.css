@@ -8,3 +8,7 @@
   border-radius: 100px;
   text-align: center;
 }
+
+.dependency a {
+  color: #fff;
+}

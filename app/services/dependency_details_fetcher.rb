@@ -1,7 +1,7 @@
 require "net/https"
 require "uri"
 
-class DependencyDetailsService
+class DependencyDetailsFetcher
 
   attr_reader :dependency
 
@@ -15,8 +15,8 @@ class DependencyDetailsService
     when "npm" then parse_from_npm
     else "#"
     end
-  # rescue
-  #   "#"
+  rescue
+    "#"
   end
 
   private
