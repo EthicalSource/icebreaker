@@ -41,7 +41,7 @@ class DependencyFetcher
           dependency = Dependency.find_or_create_by!(
             name: dependency_response.package_name,
             package_manager: package_manager,
-            language: PACKAGE_MANAGER_LANGUAGES[package_manager]
+            language: package_manager.language.name
           )
 
           project.dependency_instances.find_or_create_by!(
@@ -70,10 +70,5 @@ class DependencyFetcher
       }
     }
   GRAPHQL
-
-  PACKAGE_MANAGER_LANGUAGES = PackageManager.all.inject({}) do |h, pm|
-    h[pm] ||= pm.language.name
-    h
-  end
 
 end
