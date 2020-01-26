@@ -24,3 +24,12 @@ Challenge OSS maintainers to re-license with an ethical license so that Palantir
   * Rotate error messages randomly on DDoS prevention
   * Permanent redirect error provides high-profile url to user agent (fbi.gov?)
 * Redirect to adware site if referrer is kiwifarms, 8chan, 4chan (HN? hahaha)
+
+# Local dev
+
+To create junk data, run `rake defaults:sample_data`
+
+To set up your local environment with real data:
+* Set the `GITHUB_TOKEN` in `.env.development` to any GitHub token with org and repo read permissions
+* Set defaults: `rake defaults:init`
+* Fetch projects and their dependencies (this will take a while): `rake projects:init`
