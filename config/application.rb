@@ -1,4 +1,5 @@
 require_relative 'boot'
+require 'resque'
 require 'dotenv'
 Dotenv.load
 

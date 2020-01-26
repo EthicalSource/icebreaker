@@ -1,3 +1,6 @@
+require 'icebreaker'
+require 'resque/tasks'
+
 namespace :defaults do
 
   desc 'Create default orgs, package managers, and languages'
