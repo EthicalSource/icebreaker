@@ -23,8 +23,7 @@ class DependencyFetcher
       @client ||= GraphQL::Client.new(schema: schema, execute: http_client)
     end
 
-    def get_dependencies(project)
-      organization = project.organization
+    def get_dependencies(project, organization)
       return unless manifests = client.query(
         DependencyFetcher::QUERY_SCHEMA,
         variables: {
@@ -32,21 +31,29 @@ class DependencyFetcher
           repository_name: project.name,
         }
       ).data.repository.dependency_graph_manifests.nodes
-      manifests.map do |manifest|
-        manifest.dependencies.nodes.each do |dependency_response|
-          package_manager = PackageManager.includes(:language).find_or_create_by!(
-            name: dependency_response.package_manager
-          )
 
+      project.dependency_instances.destroy_all
+
+      manifests.map do |manifest|
+        next unless manifest.dependencies.nodes.any?
+
+        package_manager = PackageManager.find_by(
+          name: manifest.dependencies.nodes.first.package_manager
+        )
+
+        language = package_manager.language.name
+
+        manifest.dependencies.nodes.each do |dependency_response|
           dependency = Dependency.find_or_create_by!(
             name: dependency_response.package_name,
             package_manager: package_manager,
-            language: package_manager.language.name
+            language: language
           )
 
-          project.dependency_instances.find_or_create_by!(
+          project.dependency_instances.create(
             dependency: dependency,
-          ).update!(version: dependency_response.requirements)
+            version: dependency_response.requirements
+          )
         end
       end
     end

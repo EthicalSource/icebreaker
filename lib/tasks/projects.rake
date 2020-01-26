@@ -5,13 +5,11 @@ namespace :projects do
     Organization.all.each do |organization|
       puts "Fetching projects for #{organization.name}"
       OrgProjectFetcher.get_projects(organization)
-    end
-    projects = Project.all
-    total = projects.count
-    puts "Fetching dependencies"
-    projects.each_with_index do |project, i|
-      print "."
-      DependencyFetcher.get_dependencies(project)
+      puts "Fetching dependencies"
+      organization.projects.each do |project|
+        print "."
+        DependencyFetcher.get_dependencies(project, organization)
+      end
     end
   end
 
