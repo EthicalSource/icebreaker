@@ -9,9 +9,11 @@ namespace :defaults do
 
     ruby = Language.find_or_create_by(name: "Ruby")
     js = Language.find_or_create_by(name: "Javascript")
+    java = Language.find_or_create_by(name: "Java")
 
     PackageManager.find_or_create_by(name: "RubyGems", language: ruby)
     PackageManager.find_or_create_by(name: "NPM", language: js)
+    PackageManager.find_or_create_by(name: "Maven", language: java)
 
     Organization.find_or_create_by(name: "Palantir")
   end
