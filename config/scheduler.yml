@@ -1,12 +1,12 @@
 projects:
-  cron: "25 * * * *"
+  cron: "30 * * * *"
   class: "ProjectFetcherJob"
   queue: projects
   args:
   description: "This job fetches all org projects"
 
 dependencies:
-  cron: "30 * * * *"
+  cron: "40 * * * *"
   class: "DependenciesFanoutJob"
   queue: dependencies
   args:
