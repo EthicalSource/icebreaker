@@ -6,6 +6,9 @@ class Dependency < ApplicationRecord
 
   before_validation :update_with_details, on: :create
 
+  scope :with_projects, -> { includes(:projects) }
+  scope :ordered_by_name, -> { order("dependencies.name ASC") }
+
   def update_with_details
     details = DependencyDetailsFetcher.new(self).fetch
     license_name = details[:license] || "Unknown"
@@ -13,5 +16,4 @@ class Dependency < ApplicationRecord
     self.source_repo_url = details[:url]
     self.license = license
   end
-
 end
