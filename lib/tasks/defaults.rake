@@ -37,7 +37,6 @@ namespace :defaults do
       Project.create(
         name: p,
         org_name: "palantir",
-        repo_name: p,
         repo_url: "https://github.com/palantir/#{p}",
         organization: org
       )
