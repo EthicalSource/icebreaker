@@ -2,8 +2,8 @@ class DependenciesFetcherJob
 
   @queue = :dependencies
 
-  def self.perform(project_id:)
-    project = Project.find(project_id)
+  def self.perform(params={})
+    project = Project.find(params['project_id'])
     DependencyFetcher.get_dependencies(project, project.organization)
   end
 
