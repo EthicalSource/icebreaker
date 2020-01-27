@@ -10,7 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
  *= link resque_web/application.js
  *= link resque_web/application.css
@@ -20,3 +19,7 @@
  *= link resque_web/rails.png
  *= link resque_web/working.png
 */
+
+/*
+ * We are using webpacker which appears to want the CSS to live within `app/javascripts/css`
+ */
