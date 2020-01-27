@@ -6,7 +6,7 @@ projects:
   description: "This job fetches all org projects"
 
 dependencies:
-  cron: "5 * * * *"
+  cron: "10 * * * *"
   class: "DependenciesFanoutJob"
   queue: dependencies
   args:
