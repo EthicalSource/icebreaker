@@ -8,10 +8,10 @@ namespace :defaults do
     Dependency.destroy_all
     PackageManager.destroy_all
 
-    PackageManager.create(name: "RUBYGEMS")
-    PackageManager.create(name: "NPM")
-    PackageManager.create(name: "MAVEN")
-    PackageManager.create(name: "PIP")
+    PackageManager.create!(name: "RUBYGEMS")
+    PackageManager.create!(name: "NPM")
+    PackageManager.create!(name: "MAVEN")
+    PackageManager.create!(name: "PIP")
 
     Organization.find_or_create_by(name: "Palantir")
   end
@@ -25,16 +25,16 @@ namespace :defaults do
     PackageManager.destroy_all
     Language.destroy_all
 
-    ruby = Language.create(name: "Ruby")
-    js = Language.create(name: "Javascript")
+    ruby = Language.create!(name: "Ruby")
+    js = Language.create!(name: "Javascript")
 
-    ruby_package_manager = PackageManager.create(name: "RubyGems", language: ruby)
-    js_package_manager = PackageManager.create(name: "NPM", language: js)
+    ruby_package_manager = PackageManager.create!(name: "RubyGems", language: ruby)
+    js_package_manager = PackageManager.create!(name: "NPM", language: js)
 
-    org = Organization.create(name: "Palantir")
+    org = Organization.create!(name: "Palantir")
 
     %w{stormtrooper sith imperial bountyhunter}.each do |p|
-      Project.create(
+      Project.create!(
         name: p,
         org_name: "palantir",
         repo_url: "https://github.com/palantir/#{p}",
@@ -43,7 +43,7 @@ namespace :defaults do
     end
 
     %w{society snuffle rspec simplecov}.each do |p|
-      Dependency.create(
+      Dependency.create!(
         name: p,
         language: "Ruby",
         package_manager: ruby_package_manager
@@ -51,7 +51,7 @@ namespace :defaults do
     end
 
     %w{browserify api react moment}.each do |p|
-      Dependency.create(
+      Dependency.create!(
         name: p,
         language: "Javascript",
         package_manager: js_package_manager
@@ -61,7 +61,7 @@ namespace :defaults do
     Project.all.each do |project|
       Dependency.all.each_with_index do |dependency, i|
         next unless [true, false].sample
-        DependencyInstance.create(project: project, dependency: dependency, version: "0.7.#{i}")
+        DependencyInstance.create!(project: project, dependency: dependency, version: "0.7.#{i}")
       end
     end
 
