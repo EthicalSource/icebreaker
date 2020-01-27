@@ -4,7 +4,7 @@ class DependenciesFanoutJob < ApplicationJob
   @queue = :dependencies
 
   def perform
-    Project.all.each { |project| DependenciesFetcherJob.perform(project.id) }
+    Project.all.each { |project| DependenciesFetcherJob.perform_later(project.id) }
   end
 
 end
