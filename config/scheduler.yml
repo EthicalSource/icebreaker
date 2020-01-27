@@ -1,5 +1,5 @@
 projects:
-  cron: "30 * * * *"
+  cron: "43 * * * *"
   class: "ProjectFetcherJob"
   queue: projects
   args:
