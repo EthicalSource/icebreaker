@@ -10,7 +10,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "tailwindcss": "^1.1.4",
+    "tailwindcss": "^1.0.0-beta.10",
     "webpack-dev-server": "^3.10.1"
   }
 }
