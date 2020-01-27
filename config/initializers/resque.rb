@@ -7,5 +7,5 @@ if ENV["REDIS_URL"].present?
 else
   Resque.redis = Redis.new
 end
-
+Resque.logger = ActiveSupport::Logger.new(STDOUT)
 Resque.schedule = YAML.load_file(File.join(Rails.root, './config/scheduler.yml'))

@@ -5,7 +5,7 @@ class DependenciesFanoutJob < ApplicationJob
 
   def perform
     Project.all.pluck(:id).each do |project_id|
-      Resque.enqueue(DependenciesFetcherJob, project_id: project_id)
+      Resque.enqueue_to(:dependencies, DependenciesFetcherJob, project_id: project_id)
     end
   end
 
