@@ -92,7 +92,15 @@
     </fieldset>
     <section id="3-a-2-dependencies">
       <% dependencies.each do |dependency| %>
-        <%= render "dependencies/as_metaphorical_stone", dependency: dependency %>
+        <div class="dependency all <%= dependency.language.downcase %>" style="font-size: 1.<%= dependency.weight %>em;">
+          <h3><%= link_to dependency.name, dependency.url, target: "_new" %></h3>
+          <p>
+            <%= dependency.language %><br />
+          </p>
+          <% dependency.projects.each do |project| %>
+            <%= link_to project.github_identifier, project.repo_url, target: "_new" %><br />
+          <% end %>
+        </div>
       <% end %>
     </section>
   </section>
