@@ -1,4 +1,3 @@
 @import "components/dependency";
-/* @import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities"; */
+@import "components/filters";
+@import "components/layout";

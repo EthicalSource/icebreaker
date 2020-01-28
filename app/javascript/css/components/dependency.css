@@ -1,14 +1,19 @@
 .dependency {
   float: left;
-  padding: 2em;
-  margin: .5em;
+  padding: .5em;
+  margin: 2px;
   background-color: #900;
-  color: #fff;
-  border: 2px solid #000;
-  border-radius: 100px;
+  color: #000;
+  background-image: url(/assets/stone.png);
+  border: 2px solid #aaa;
+  border-radius: 10px;
   text-align: center;
 }
 
 .dependency a {
-  color: #fff;
+  color: #900;
+}
+
+h3 {
+  font-size: 1.1em;
 }

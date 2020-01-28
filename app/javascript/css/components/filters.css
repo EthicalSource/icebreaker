@@ -1,0 +1,22 @@
+.language-selector {
+  float: left;
+  background-color: #000;
+  padding: 0.5em;
+  color: #fff;
+  margin: .5em;
+  border-radius: 5px;
+}
+
+.language-selector-container {
+  margin-left: 33%;
+  margin-right: 25%;
+}
+
+fieldset {
+  background: #ddd;
+  border: none;
+  margin-bottom: 1.25em;
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
