@@ -1,7 +1,5 @@
 body {
   background: #600;
-  font-family: monospace;
-  font-size: 1.2em;
   border: 5em solid #900;
   padding: 0em;
   color: #000;
@@ -17,7 +15,7 @@ a {
 }
 
 h2, h3 {
-  font-family: "Palatino", serif;
+
   text-align: center;
 }
 
