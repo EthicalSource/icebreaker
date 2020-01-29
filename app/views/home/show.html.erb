@@ -79,11 +79,11 @@
           <h3>Filter by Programming Language</h3>
         </label>
         <div class="language-selector-container">
-          <div class="language-selector" onClick="filter('all')">
+          <div class="language-selector selected" id="filter-all" onClick="filter('all')">
             All
           </div>
           <% @languages.each do |language| %>
-            <div class="language-selector" onClick="filter('<%= language.name.downcase %>')">
+            <div class="language-selector" id="filter-<%= language.name.downcase %>" onClick="filter('<%= language.name.downcase %>')">
               <%= language.name %>
             </div>
           <% end %>
