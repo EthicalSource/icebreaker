@@ -1,4 +1,8 @@
+@import "layout";
 @import "typography";
+
 @import "components/dependency";
 @import "components/filters";
-@import "components/layout";
+
+@import "utilities/mw-inherit";
+

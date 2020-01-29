@@ -1,0 +1,44 @@
+body {
+  background: #600;
+
+  padding: 0em;
+  color: #000;
+}
+
+.body {
+  padding: 2em;
+  background-color: #eee;
+}
+
+/* TODO: We may want to figure out a way to generalize media queries */
+@media (min-width: 720px) {
+  .body {
+    border: 5em solid #900;
+  }
+
+  .body > section {
+    max-width: 34em;
+    margin: 0 auto 3em;
+  }
+
+  h2.supersized {
+    font-size: 7rem;
+  }
+}
+
+a {
+  color: #900;
+}
+
+h2, h3 {
+
+  text-align: center;
+}
+
+footer {
+  background-color: #ddd;
+  text-align: center;
+  padding: 1em;
+}
+
+
