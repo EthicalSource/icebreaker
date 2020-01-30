@@ -61,7 +61,7 @@
     <li>If all else fails, <a href="https://www.theverge.com/2019/9/20/20876495/github-seth-vargo-pulled-code-chef-ice-deportations-trump-administration">pull your public code</a>.</li>
   </ul>
 </section>
-<section id="4-tear-down-the-wall">
+<section id="4-tear-down-the-wall" class="mw-inherit">
   <h2>
     Tear Down The Wall!
   </h2>
@@ -72,8 +72,8 @@
 
   <%= javascript_pack_tag 'filter' %>
 
-  <section id="3-a-searchable-dependencies">
-    <fieldset id="3-a-1-filters">
+  <section id="4-a-searchable-dependencies">
+    <fieldset id="4-a-1-filters">
       <div>
         <label for="filter-programming-languages">
           <h3>Filter by Programming Language</h3>
@@ -90,7 +90,7 @@
         </div>
       </div>
     </fieldset>
-    <section id="3-a-2-dependencies">
+    <section id="4-a-2-dependencies">
       <% dependencies.each do |dependency| %>
         <div class="dependency all <%= dependency.language.downcase %>">
           <h3><%= link_to dependency.name, dependency.url, target: "_new" %></h3>
