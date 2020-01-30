@@ -1,3 +1,5 @@
+[https://icebreaker.dev/](https://icebreaker.dev/)
+
 # Goal
 Force Palantir to make all of their OSS repos on GitHub private, to eliminate complicity opportunities, recruitment opportunities, and general participation opportunities for the company
 
