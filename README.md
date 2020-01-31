@@ -1,5 +1,8 @@
 [https://icebreaker.dev/](https://icebreaker.dev/)
 
+# Note from the developers
+This is not exemplary code. Icebreaker.dev was hacked together in less than 3 days.
+
 # Goal
 Force Palantir to make all of their OSS repos on GitHub private, to eliminate complicity opportunities, recruitment opportunities, and general participation opportunities for the company
 
