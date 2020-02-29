@@ -1,7 +1,6 @@
-require "resque_web"
-
 Rails.application.routes.draw do
-  mount ResqueWeb::Engine => "/resque_web"
+  mount Sidekiq::Web => '/sidekiq'
+
 
   resources :projects, only: [:index, :show]
 

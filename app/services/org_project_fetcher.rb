@@ -39,12 +39,14 @@ class OrgProjectFetcher
         cursor = response.organization.repositories.edges.last&.cursor
       end
       projects.flatten.each do |project|
-        Project.find_or_create_by(
+        project = Project.find_or_create_by(
           name: project.name,
           repo_url: project.url,
           org_name: project.owner.login,
           organization: organization
         )
+
+        DependenciesFetcherJob.perform_later(project)
       end
       true
     end

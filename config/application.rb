@@ -10,6 +10,6 @@ module Icebreaker
   class Application < Rails::Application
     config.load_defaults 6.0
     config.autoload_paths << "#{Rails.root}/app/services/*"
-    config.active_job.queue_adapter = :resque
+    config.active_job.queue_adapter = :sidekiq
   end
 end

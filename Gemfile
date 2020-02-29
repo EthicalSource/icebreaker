@@ -12,12 +12,15 @@ gem 'pg'
 gem 'puma', '~> 4.3'
 gem 'rack-attack'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-gem 'resque'
-gem 'resque-scheduler'
-gem 'resque-web', require: 'resque_web'
+gem 'sidekiq'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
+# For some reason, this is required for the build to succeed on Heroku
+# However, we do not use coffeescript.
+# Someday I will understand the Rails Asset Pipeline + Webpacker,
+# but today is not that day.
+gem 'coffee-rails'
 
 group :development, :test do
   gem 'dotenv-rails'

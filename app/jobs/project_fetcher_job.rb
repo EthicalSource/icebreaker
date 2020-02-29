@@ -1,11 +1,8 @@
-class ProjectFetcherJob
+class ProjectFetcherJob < ApplicationJob
 
-  @queue = :projects
-
-  def self.perform
+  def perform
     Organization.all.each do |organization|
       OrgProjectFetcher.get_projects(organization)
     end
   end
-
 end
