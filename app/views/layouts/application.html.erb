@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Icebreaker</title>
+    <title>Icebreaker - Documenting How Palantir Profits from Human Rights Abuses</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +24,7 @@
     <meta name="theme-color" content="#ffffff">
     <meta property="og:image" content="https://icebreaker.dev/assets/logo.jpg">
     <meta property="og:site_name" content="ICEBreaker"/>
-    <meta property="og:title" content="ICE Uses Open Source to Violate Human Rights."/>
+    <meta property="og:title" content="Documenting how ICE contractor Palantir uses open source to profit from human rights abuses."/>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV.fetch('ANALYTICS_ID', "") %>"></script>
@@ -41,8 +41,10 @@
       <%= yield %>
     </div>
     <footer>
+      <p>A project of the <a href="https://ethicalsource.dev">Ethical Source Working Group</a>.</p>
       <p>Created by <a href="https://where.coraline.codes/">Coraline Ada Ehmke</a>,
       Dean Galvin, and <a href="https://twitter.com/zspencer">Zee Spencer</a> in 2020.</p>
+      <p><a href="https://github.com/EthicalSource/icebreaker">https://github.com/EthicalSource/icebreaker</a></p>
     </footer>
   </body>
 </html>
