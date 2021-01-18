@@ -30,6 +30,8 @@ Challenge OSS maintainers to re-license with an ethical license so that Palantir
 
 `bundle exec rails db:schema:load`
 
+`cp .env.example .env`
+
 ## Seed data
 
 To create junk data, run `bin/rake defaults:junk_data`
