@@ -5,7 +5,7 @@ class DependencyPresenter
   def initialize(dependency)
     @name = dependency.name
     @projects = dependency.projects
-    @language = dependency.language
+    @language = dependency.language || ""
     @weight = @projects.size
     @url = dependency.source_repo_url
   end

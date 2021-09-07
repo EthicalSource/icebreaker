@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @dependencies ||= Dependency.all
       .with_projects
       .ordered_by_name
+      .reject{ |dependency| dependency.language.blank? }
       .map { |dependency| DependencyPresenter.new(dependency) }
       .sort_by(&:weight)
   end
